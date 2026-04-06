@@ -301,7 +301,7 @@
     <!-- Connect existing scripts -->
     <script src="main.js"></script>
     <script>
-        // Submit form data directly to Google Forms silently
+        // Submit form data directly to Web3Forms
         document.getElementById('quote-form')?.addEventListener('submit', function (e) {
             e.preventDefault();
             
@@ -312,20 +312,29 @@
             submitBtn.disabled = true;
 
             const formData = new FormData();
-            // Google Form entry mappings
-            formData.append('entry.1107558763', document.getElementById('name').value);
-            formData.append('entry.2082455918', document.getElementById('email').value);
-            formData.append('entry.2085900674', document.getElementById('phone').value);
-            formData.append('entry.399906213', document.getElementById('message').value);
+            
+            // Web3Forms Access Key
+            formData.append('access_key', '1f7cee61-56a7-4959-a021-237ed256fee8');
+            
+            // Form fields mapping
+            formData.append('name', document.getElementById('name').value);
+            formData.append('email', document.getElementById('email').value);
+            formData.append('phone', document.getElementById('phone').value);
+            formData.append('message', document.getElementById('message').value);
 
-            // POST to the Action URL
-            fetch("https://docs.google.com/forms/d/e/1FAIpQLSer3wPblWqz0aRkO1wQYWHPnGGWEcj0M6c2H4Lx5ldLQ_n8kQ/formResponse", {
+            // POST to Web3Forms API
+            fetch("https://api.web3forms.com/submit", {
                 method: "POST",
-                mode: "no-cors",
                 body: formData
-            }).then(() => {
-                alert('Thank you! Your quote request has been sent successfully.');
-                form.reset();
+            }).then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    alert('Thank you! Your quote request has been sent successfully.');
+                    form.reset();
+                } else {
+                    console.log(response);
+                    alert(json.message);
+                }
             }).catch(error => {
                 alert('There was an error sending your request. Please call us directly.');
                 console.error(error);
