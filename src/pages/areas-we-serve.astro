@@ -6,7 +6,7 @@ import areasHero from '../assets/corporate_window_floor_care.png';
 
 <BaseLayout 
   title="Areas We Serve | Duke's Professional Cleaning"
-  description="Explore commercial cleaning coverage across Dacula, Lawrenceville, Buford, Gwinnett County, and Metro Atlanta with Duke's Professional Cleaning."
+  description="Explore commercial cleaning coverage across Dacula, Lawrenceville, Buford, Gwinnett County, and Metro Atlanta (Fulton, Cobb, DeKalb, Hall, Cherokee, Newton, Barrow, Rockdale, Forsyth, Walton) with Duke's Professional Cleaning."
 >
   <main>
     <section class="inner-hero">
@@ -40,20 +40,22 @@ import areasHero from '../assets/corporate_window_floor_care.png';
         <article class="info-card">
           <h2>Core Coverage</h2>
           <ul class="check-list">
-            <li>Dacula</li>
-            <li>Lawrenceville</li>
-            <li>Buford</li>
-            <li>Hamilton Mill</li>
-            <li>Auburn and Hoschton</li>
+            <li>Gwinnett County</li>
+            <li>Hall County</li>
+            <li>Barrow County</li>
           </ul>
         </article>
         <article class="info-card">
           <h2>Extended Coverage</h2>
           <ul class="check-list">
-            <li>Braselton</li>
-            <li>Flowery Branch</li>
-            <li>Suwanee and Duluth</li>
-            <li>Snellville</li>
+            <li>Fulton County</li>
+            <li>Cobb County</li>
+            <li>DeKalb County</li>
+            <li>Cherokee County</li>
+            <li>Newton County</li>
+            <li>Rockdale County</li>
+            <li>Forsyth County</li>
+            <li>Walton County</li>
             <li>Broader Metro Atlanta by proposal</li>
           </ul>
         </article>
@@ -76,18 +78,52 @@ import areasHero from '../assets/corporate_window_floor_care.png';
       <div class="container">
         <h2 class="section-title">Interactive Service Area Map</h2>
         <p class="section-subtitle">
-          Based in Dacula, GA and serving corporate, medical, and commercial facilities throughout Gwinnett County and Metro Atlanta.
+          Based in Dacula, GA and serving corporate, medical, and commercial facilities throughout Metro Atlanta, including Fulton, Cobb, DeKalb, Gwinnett, Hall, Cherokee, Newton, Barrow, Rockdale, Forsyth, and Walton counties.
         </p>
         <div class="map-wrapper">
-          <iframe
-            title="Duke's Professional Cleaning Service Area Map - Metro Atlanta & Gwinnett County, GA"
-            src="https://maps.google.com/maps?q=Metro+Atlanta,+Gwinnett+County,+GA&t=&z=9&ie=UTF8&iwloc=&output=embed"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+          <div
+            id="service-map"
+            role="img"
+            aria-label="Map of Metro Atlanta highlighting Fulton, Cobb, DeKalb, Gwinnett, Hall, Cherokee, Newton, Barrow, Rockdale, Forsyth, and Walton counties"
+          ></div>
         </div>
+        <p class="map-caption">
+          Highlighted counties: Fulton, Cobb, DeKalb, Gwinnett, Hall, Cherokee, Newton, Barrow, Rockdale, Forsyth, and Walton.
+          Based in Dacula, GA.
+        </p>
       </div>
     </section>
   </main>
 </BaseLayout>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+  import counties from '../data/metro-counties.json';
+
+  const el = document.getElementById('service-map');
+  if (el) {
+    const map = L.map(el, { scrollWheelZoom: false });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
+
+    const base = { color: '#1e3a8a', weight: 2, fillColor: '#3b82f6', fillOpacity: 0.3 };
+    const hover = { fillOpacity: 0.55, weight: 3 };
+
+    const layer = L.geoJSON(counties as any, {
+      style: base,
+      onEachFeature: (feature, l) => {
+        l.bindTooltip(`${feature.properties.name} County`, { sticky: true });
+        l.on('mouseover', () => (l as L.Path).setStyle(hover));
+        l.on('mouseout', () => (l as L.Path).setStyle(base));
+      },
+    }).addTo(map);
+    map.fitBounds(layer.getBounds(), { padding: [10, 10] });
+
+    L.circleMarker([34.0023, -83.9007], {
+      radius: 7, color: '#ffffff', weight: 2, fillColor: '#06b6d4', fillOpacity: 1,
+    }).addTo(map).bindTooltip("Duke's HQ — Dacula, GA");
+  }
+</script>
