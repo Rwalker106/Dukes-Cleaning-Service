@@ -1,0 +1,320 @@
+---
+// src/pages/index.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Picture } from 'astro:assets';
+
+// Import a local picture from your assets folder
+import officeHero from '../assets/office_hero.png';
+
+// Services section card pictures
+import commercialCleaningImg from '../assets/commercial_cleaning.png';
+import deepSanitationImg from '../assets/deep_cleaning.png';
+import janitorialServicesImg from '../assets/janitorial_services.png';
+import restroomCareImg from '../assets/breakroom_bathroom_cleaning.png';
+import afterHoursImg from '../assets/after_hours_cleaning.png';
+import greenOfficeImg from '../assets/green-office-space.jpeg';
+---
+
+<BaseLayout title="Commercial Cleaning Services | Duke's Professional Cleaning">
+  <main>
+    <div class="hero-bg">
+      <!-- Astro automatically calculates width/height, compresses, and lazy-loads -->
+      <Picture 
+        src={officeHero} 
+        alt="A clean office space in Atlanta" 
+        loading="eager" 
+        fetchpriority="high"
+        class="hero-image"
+        widths={[1200, 768, 480, 320]}
+        formats={["avif", "webp"]}
+        sizes="(max-width: 1200px) 100vw, 1200px"
+      />
+      
+    </div>
+    <div class="container">
+      <div class="hero-content fade-in visible">
+        <h1>Trusted Commercial Cleaning <br> in Metro Atlanta</h1>
+        <p>Welcome to Duke's Professional Cleaning Services. Reliable, detail-driven cleaning for corporate offices and commercial spaces — trusted across Dacula, Gwinnett County, and Metro Atlanta.</p>
+        <a href="/services" class="btn-primary btn">Explore Our Services</a>
+
+        <div class="trust-strip">
+          <p class="trust-strip-heading">Rated 5 Stars on Google</p>
+          <div class="trust-review">
+            <div class="trust-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="trust-quote">"Duke's Cleaning Service is amazing! They are very professional and knowledgeable about how to clean professionally! I'd recommend using them anytime"</p>
+            <p class="trust-author">— Norris Hamilton <span class="trust-badge">Local Guide · Level 2</span></p>
+          </div>
+          <div class="trust-review">
+            <div class="trust-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="trust-quote">"Great experience very thorough job would recommend 10/10"</p>
+            <p class="trust-author">— H. B. <span class="trust-badge">Local Guide · Level 1</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="services-section">
+      <div class="container">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Comprehensive commercial cleaning solutions tailored to your business</p>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-img">
+              <Picture 
+              src={commercialCleaningImg} 
+              alt="Commercial cleaning for offices and business spaces" 
+              loading="lazy"
+              fetchpriority="low"
+              widths={[800, 640, 480, 320, 240]}
+              formats={['avif', 'webp']}
+              sizes="(max-width: 695px) calc(100vw-4rem), (max-width: 1027px) calc((100vw-6rem)/2), (max-width: 1232px) calc((100vw-8rem)/3), 379px"
+              />
+            </div>
+            <h3>Commercial Cleaning</h3>
+            <p>Reliable daily and recurring cleaning for offices and commercial spaces of any size.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-img">
+              <Picture 
+              src={deepSanitationImg} 
+              alt="Deep sanitation and disinfection cleaning" 
+              loading="lazy"
+              fetchpriority="low"
+              widths={[800, 640, 480, 320, 240]}
+              formats={['avif', 'webp']}
+              sizes="(max-width: 695px) calc(100vw-4rem), (max-width: 1027px) calc((100vw-6rem)/2), (max-width: 1232px) calc((100vw-8rem)/3), 379px"
+              />
+            </div>
+            <h3>Deep Sanitation</h3>
+            <p>Intensive deep-cleaning and disinfection to keep your workspace genuinely spotless.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-img">
+              <Picture 
+              src={janitorialServicesImg} 
+              alt="Janitorial services for ongoing facility maintenance" 
+              loading="lazy"
+              fetchpriority="low"
+              widths={[800, 640, 480, 320, 240]}
+              formats={['avif', 'webp']}
+              sizes="(max-width: 695px) calc(100vw-4rem), (max-width: 1027px) calc((100vw-6rem)/2), (max-width: 1232px) calc((100vw-8rem)/3), 379px"
+              />
+            </div>
+            <h3>Janitorial Services</h3>
+            <p>Dependable ongoing maintenance to keep your facility looking its best, day after day.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-img">
+              <Picture 
+              src={restroomCareImg} 
+              alt="Breakroom and restroom cleaning and care" 
+              loading="lazy"
+              fetchpriority="low"
+              widths={[800, 640, 480, 320, 240]}
+              formats={['avif', 'webp']}
+              sizes="(max-width: 695px) calc(100vw-4rem), (max-width: 1027px) calc((100vw-6rem)/2), (max-width: 1232px) calc((100vw-8rem)/3), 379px"
+              />
+            </div>
+            <h3>Breakroom & Restroom Care</h3>
+            <p>Detailed, high-touch care for the spaces your team and clients notice most.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-img">
+              <Picture 
+              src={afterHoursImg} 
+              alt="After-hours commercial cleaning" 
+              loading="lazy"
+              fetchpriority="low"
+              widths={[800, 640, 480, 320, 240]}
+              formats={['avif', 'webp']}
+              sizes="(max-width: 695px) calc(100vw-4rem), (max-width: 1027px) calc((100vw-6rem)/2), (max-width: 1232px) calc((100vw-8rem)/3), 379px"
+              />
+            </div>
+            <h3>After-Hours Cleaning</h3>
+            <p>Scheduled around your hours, so cleaning never disrupts your workday.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-img">
+              <Picture 
+              src={greenOfficeImg} 
+              alt="Green, eco-friendly office cleaning" 
+              loading="lazy"
+              fetchpriority="low"
+              widths={[800, 640, 480, 320, 240]}
+              formats={['avif', 'webp']}
+              sizes="(max-width: 695px) calc(100vw-4rem), (max-width: 1027px) calc((100vw-6rem)/2), (max-width: 1232px) calc((100vw-8rem)/3), 379px"
+              />
+            </div>
+            <h3>Green Office Cleaning</h3>
+            <p>Eco-friendly products and practices, without compromising on results.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="why-us">
+      <div class="container">
+        <h2 class="section-title">Why Choose Duke's Professional Cleaning?</h2>
+        <p class="section-subtitle">Three reasons Atlanta businesses trust us with their facilities</p>
+
+        <div class="why-us-grid">
+          <div class="why-us-card">
+            <div class="why-us-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" focusable="false">
+                <path d="M12 2l7 3v6c0 4.8-2.7 9.2-7 11-4.3-1.8-7-6.2-7-11V5l7-3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
+                <path d="M8.5 12.5l2.1 2.1 4.9-4.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            <h3>Vetted, Trained Crews</h3>
+            <p>Professional teams with consistent standards, clear checklists, and detail-focused quality control.</p>
+          </div>
+
+          <div class="why-us-card">
+            <div class="why-us-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" focusable="false">
+                <rect x="3.5" y="4" width="17" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"></rect>
+                <path d="M8 2.8v2.4M16 2.8v2.4M7.5 10.5h9M7.5 14h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+              </svg>
+            </div>
+            <h3>Reliable Scheduling</h3>
+            <p>Morning, evening, and after-hours options built around your workflow so operations stay uninterrupted.</p>
+          </div>
+
+          <div class="why-us-card">
+            <div class="why-us-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" focusable="false">
+                <path d="M20 6l-8 3-8-3 8-3 8 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
+                <path d="M4 10l8 3 8-3M4 14l8 3 8-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            <h3>Proven Commercial Experience</h3>
+            <p>From offices to medical spaces, we deliver repeatable results that hold up under daily use.</p>
+          </div>
+        </div>
+        <div class="why-us-cta-wrap">
+          <a href="/about" class="btn btn-outline">See All Reasons to Choose Duke's</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-quote-cta">
+      <div class="container">
+        <h2 class="section-title">Ready to Request a Quote?</h2>
+        <p class="section-subtitle">Share quick contact details for a fast follow-up, or submit a formal RFP for a detailed proposal.</p>
+
+        <div class="quote-dual-path">
+          <article class="quote-path-card">
+            <h3>Quick Quote (NAP)</h3>
+            <p class="quote-path-note">Perfect when you just want us to reach out and start pricing.</p>
+
+            <form
+              name="quick-quote"
+              method="POST"
+              action="https://api.web3forms.com/submit"
+              class="quick-quote-form"
+              id="quick-quote-form"
+            >
+              <input type="hidden" name="access_key" value="1f7cee61-56a7-4959-a021-237ed256fee8" />
+              <input type="hidden" name="subject" value="Quick Quote Request - Duke's Professional Cleaning" />
+              <input type="hidden" name="from_name" value="Duke's Website Quick Quote" />
+              <input type="hidden" name="botcheck" />
+              <p class="hidden-field" aria-hidden="true">
+                <label>Do not fill this out if you're human: <input name="botcheck" tabindex="-1" autocomplete="off" /></label>
+              </p>
+
+              <div class="form-group">
+                <label for="qq-name">Name</label>
+                <input id="qq-name" name="name" type="text" class="form-control" required autocomplete="name" />
+              </div>
+
+              <div class="form-group">
+                <label for="qq-address">Business Address</label>
+                <input id="qq-address" name="address" type="text" class="form-control" required autocomplete="street-address" />
+              </div>
+
+              <div class="form-group">
+                <label for="qq-phone">Phone</label>
+                <input id="qq-phone" name="phone" type="tel" class="form-control" autocomplete="tel" />
+              </div>
+
+              <div class="form-group">
+                <label for="qq-email">Email</label>
+                <input id="qq-email" name="email" type="email" class="form-control" autocomplete="email" />
+              </div>
+
+              <p class="quote-contact-help">Please provide at least one contact method: phone or email.</p>
+
+              <div class="form-group">
+                <label for="qq-notes">How can we help you improve your space?</label>
+                <textarea
+                  id="qq-notes"
+                  name="notes"
+                  class="form-control quick-quote-notes"
+                  maxlength="400"
+                  rows="3"
+                  aria-describedby="qq-notes-help"
+                ></textarea>
+                <p id="qq-notes-help" class="quote-field-help">Optional, max 400 characters.</p>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Request a Quick Quote</button>
+              <p class="form-status" data-form-status="quick-quote" aria-live="polite"></p>
+            </form>
+          </article>
+
+          <article class="quote-path-card quote-path-card-rfp">
+            <h3>Have a Formal RFP?</h3>
+            <p class="quote-path-note">For multi-site scope, compliance needs, and file attachments, use the full intake flow.</p>
+
+            <div class="rfp-trust-points" aria-hidden="true">
+              <span>Structured scope capture</span>
+              <span>Upload support coming in form</span>
+              <span>Built for serious buyers</span>
+            </div>
+
+            <a href="/rfp" class="btn btn-outline">Go to Detailed RFP Form</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <script is:inline>
+      (() => {
+        const form = document.getElementById('quick-quote-form');
+        if (!form) return;
+
+        const phone = document.getElementById('qq-phone');
+        const email = document.getElementById('qq-email');
+        if (!(phone instanceof HTMLInputElement) || !(email instanceof HTMLInputElement)) return;
+
+        const message = 'Please provide a phone number or an email address.';
+
+        const validateContactMethod = () => {
+          const hasPhone = phone.value.trim().length > 0;
+          const hasEmail = email.value.trim().length > 0;
+          const isValid = hasPhone || hasEmail;
+
+          phone.setCustomValidity(isValid ? '' : message);
+          email.setCustomValidity(isValid ? '' : message);
+        };
+
+        phone.addEventListener('input', validateContactMethod);
+        email.addEventListener('input', validateContactMethod);
+
+        form.addEventListener('submit', (event) => {
+          validateContactMethod();
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            form.reportValidity();
+          }
+        });
+      })();
+    </script>
+
+  </main>
+</BaseLayout>

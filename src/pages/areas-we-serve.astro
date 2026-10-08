@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Picture } from 'astro:assets';
+import areasHero from '../assets/corporate_window_floor_care.png';
+---
+
+<BaseLayout 
+  title="Areas We Serve | Duke's Professional Cleaning"
+  description="Explore commercial cleaning coverage across Dacula, Lawrenceville, Buford, Gwinnett County, and Metro Atlanta with Duke's Professional Cleaning."
+>
+  <main>
+    <section class="inner-hero">
+      <div class="inner-hero-grid">
+        <div>
+          <p class="inner-eyebrow">Service Geography</p>
+          <h1>Commercial cleaning coverage across Dacula and Metro Atlanta</h1>
+          <p>
+            Duke's serves businesses throughout Gwinnett County and surrounding
+            Metro Atlanta communities with recurring and after-hours service plans.
+          </p>
+          <div class="inner-hero-actions">
+            <a href="/rfp" class="btn btn-primary">Request Service in Your Area</a>
+            <a href="/services" class="btn btn-outline">Browse Service Types</a>
+          </div>
+        </div>
+        <div class="inner-hero-media">
+          <Picture
+            src={areasHero}
+            alt="Polished commercial interior maintained for businesses throughout Metro Atlanta"
+            widths={[1200, 900, 640, 480]}
+            formats={['avif', 'webp']}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 48vw, 520px"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="content-grid">
+        <article class="info-card">
+          <h2>Core Coverage</h2>
+          <ul class="check-list">
+            <li>Dacula</li>
+            <li>Lawrenceville</li>
+            <li>Buford</li>
+            <li>Hamilton Mill</li>
+            <li>Auburn and Hoschton</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h2>Extended Coverage</h2>
+          <ul class="check-list">
+            <li>Braselton</li>
+            <li>Flowery Branch</li>
+            <li>Suwanee and Duluth</li>
+            <li>Snellville</li>
+            <li>Broader Metro Atlanta by proposal</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h2>How Scheduling Works</h2>
+          <p>
+            Multi-site and high-frequency programs are scheduled by route and
+            service window to reduce disruption and improve consistency.
+          </p>
+          <ul class="check-list">
+            <li>Daytime, evening, and after-hours options</li>
+            <li>Flexible frequency from weekly to nightly</li>
+            <li>Fast response for priority situations</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section map-section">
+      <div class="container">
+        <h2 class="section-title">Interactive Service Area Map</h2>
+        <p class="section-subtitle">
+          Based in Dacula, GA and serving corporate, medical, and commercial facilities throughout Gwinnett County and Metro Atlanta.
+        </p>
+        <div class="map-wrapper">
+          <iframe
+            title="Duke's Professional Cleaning Service Area Map - Dacula & Gwinnett County, GA"
+            src="https://maps.google.com/maps?q=Dacula,+Gwinnett+County,+GA&t=&z=10&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

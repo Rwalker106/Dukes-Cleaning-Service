@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Picture } from 'astro:assets';
+import greenHero from '../assets/green_clean_hero.png';
+---
+
+<BaseLayout 
+  title="Green Cleaning | Duke's Professional Cleaning"
+  description="Eco-friendly, health-conscious commercial cleaning using non-toxic products and sustainable practices across Metro Atlanta."
+>
+  <main>
+    <section class="inner-hero">
+      <div class="inner-hero-grid">
+        <div>
+          <p class="inner-eyebrow">Green Cleaning Program</p>
+          <h1>Health-conscious cleaning with practical, low-impact methods</h1>
+          <p>
+            Our green approach reduces harsh chemical exposure while maintaining
+            dependable results in offices, medical-adjacent spaces, and commercial
+            common areas.
+          </p>
+          <div class="inner-hero-actions">
+            <a href="/rfp" class="btn btn-primary">Request Green Cleaning</a>
+            <a href="/services" class="btn btn-outline">See All Services</a>
+          </div>
+        </div>
+        <div class="inner-hero-media">
+          <Picture
+            src={greenHero}
+            alt="Eco-friendly cleaning process used in a modern commercial office"
+            widths={[1200, 900, 640, 480]}
+            formats={['avif', 'webp']}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 48vw, 520px"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="content-grid">
+        <article class="info-card">
+          <h2>Product Standards</h2>
+          <ul class="check-list">
+            <li>Safer chemistry where practical</li>
+            <li>Reduced residue on frequently touched surfaces</li>
+            <li>Products selected for indoor use and occupant comfort</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h2>Process Improvements</h2>
+          <ul class="check-list">
+            <li>Targeted application to avoid overuse</li>
+            <li>Microfiber-first approach for effective soil capture</li>
+            <li>Refill and dilution controls to reduce waste</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h2>Where It Works Best</h2>
+          <ul class="check-list">
+            <li>Office suites and shared workspaces</li>
+            <li>Tenant-facing lobbies and amenity zones</li>
+            <li>Facilities with sensitivity to odors or residue</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

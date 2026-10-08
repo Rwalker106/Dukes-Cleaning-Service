@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Picture } from 'astro:assets';
+import servicesHero from '../assets/office_cleaning_hero.png';
+---
+
+<BaseLayout 
+	title="Our Services | Duke's Professional Cleaning"
+	description="Comprehensive commercial cleaning services including office cleaning, medical facility sanitation, deep resets, and eco-friendly solutions."
+>
+	<main>
+		<section class="inner-hero">
+			<div class="inner-hero-grid">
+				<div>
+					<p class="inner-eyebrow">Service Portfolio</p>
+					<h1>Commercial cleaning services designed for repeatable quality</h1>
+					<p>
+						Choose from specialized programs for offices, medical facilities,
+						and deep-clean resets.
+					</p>
+					<div class="inner-hero-actions">
+						<a href="/rfp" class="btn btn-primary">Request a Detailed Proposal</a>
+						<a href="/areas-we-serve" class="btn btn-outline">Check Service Areas</a>
+					</div>
+				</div>
+				<div class="inner-hero-media">
+					<Picture
+						src={servicesHero}
+						alt="Commercial office corridor prepared by a professional cleaning team"
+						widths={[1200, 900, 640, 480]}
+						formats={['avif', 'webp']}
+						sizes="(max-width: 768px) 100vw, (max-width: 1200px) 48vw, 520px"
+					/>
+				</div>
+			</div>
+		</section>
+
+		<section class="content-section">
+			<div class="content-grid">
+				<article class="info-card">
+					<h2>Deep Cleaning</h2>
+					<p>Top-to-bottom reset cleaning for facilities that need a stronger baseline.</p>
+					<p><a href="/services/deep-cleaning" class="btn btn-outline">View Deep Cleaning</a></p>
+				</article>
+				<article class="info-card">
+					<h2>Office Cleaning</h2>
+					<p>Recurring office care programs aligned with staff schedules and traffic flow.</p>
+					<p><a href="/services/office-cleaning" class="btn btn-outline">View Office Cleaning</a></p>
+				</article>
+				<article class="info-card">
+					<h2>Medical Facility Cleaning</h2>
+					<p>Protocol-aware cleaning and disinfection for healthcare and clinical settings.</p>
+					<p><a href="/services/medical-cleaning" class="btn btn-outline">View Medical Cleaning</a></p>
+				</article>
+			</div>
+		</section>
+	</main>
+</BaseLayout>

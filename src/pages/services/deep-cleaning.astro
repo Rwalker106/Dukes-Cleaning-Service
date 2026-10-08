@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Picture } from 'astro:assets';
+import deepHero from '../../assets/deep_cleaning_hero.png';
+
+const faqItems = [
+  {
+    question: 'What is included in commercial deep cleaning?',
+    answer:
+      'Deep cleaning covers detailed high-touch disinfection, baseboard and corner attention, restroom reset work, breakroom sanitation, and surface recovery beyond routine janitorial cycles.',
+  },
+  {
+    question: 'How often should a business schedule deep cleaning?',
+    answer:
+      'Most offices schedule quarterly deep cleaning, while higher-traffic facilities may schedule monthly or bi-monthly based on foot traffic, shared surfaces, and inspection requirements.',
+  },
+  {
+    question: 'Can deep cleaning be done after business hours?',
+    answer:
+      'Yes. Duke\'s schedules deep-cleaning projects in evening or after-hours windows to reduce disruption for staff and customers.',
+  },
+  {
+    question: 'Do you bring your own products and equipment?',
+    answer:
+      'Yes. Our crews arrive with professional products, tools, and a scoped checklist so clients know exactly what is being addressed during each visit.',
+  },
+  {
+    question: 'Is deep cleaning available across Gwinnett County and Metro Atlanta?',
+    answer:
+      'Yes. Deep-cleaning service is available in Dacula, throughout Gwinnett County, and in surrounding Metro Atlanta service areas by proposal.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout 
+  title="Deep Cleaning | Duke's Professional Cleaning"
+  description="Top-to-bottom commercial deep cleaning and sanitation resets for business facilities, corporate offices, and commercial properties."
+>
+  <main>
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+    <section class="inner-hero">
+      <div class="inner-hero-grid">
+        <div>
+          <p class="inner-eyebrow">Specialized Service</p>
+          <h1>Commercial deep cleaning for high-impact facility reset</h1>
+          <p>
+            Duke's deep-cleaning service restores presentation quality in offices,
+            restrooms, and shared spaces where routine cleaning alone is not enough.
+          </p>
+          <div class="inner-hero-actions">
+            <a href="/rfp" class="btn btn-primary">Request Deep Cleaning Quote</a>
+            <a href="/services" class="btn btn-outline">Back to All Services</a>
+          </div>
+        </div>
+        <div class="inner-hero-media">
+          <Picture
+            src={deepHero}
+            alt="Deep cleaning process restoring a commercial interior to high presentation standards"
+            widths={[1200, 900, 640, 480]}
+            formats={['avif', 'webp']}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 48vw, 520px"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="content-grid">
+        <article class="info-card">
+          <h2>Best Fit</h2>
+          <ul class="check-list">
+            <li>Quarterly reset cleaning for office suites</li>
+            <li>Post-construction or renovation cleanup support</li>
+            <li>Pre-inspection and pre-visit presentation prep</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h2>High-Impact Focus Areas</h2>
+          <ul class="check-list">
+            <li>Restrooms, touchpoints, and fixtures</li>
+            <li>Breakrooms and shared kitchen surfaces</li>
+            <li>Baseboards, trim lines, and edge zones</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h2>Service Outcome</h2>
+          <p>
+            Facilities receive a cleaner baseline that makes recurring maintenance
+            more effective and easier to sustain over time.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <h2 class="faq-title">Deep Cleaning FAQ</h2>
+      <p class="faq-lead">
+        Common questions and direct answers for buyers, managers, and AI search
+        systems looking for commercial deep-cleaning details.
+      </p>
+      <div class="faq-accordion">
+        {faqItems.map((item) => (
+          <details class="faq-item">
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>

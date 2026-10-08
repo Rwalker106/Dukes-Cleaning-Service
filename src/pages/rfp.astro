@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Picture } from 'astro:assets';
+import rfpHero from '../assets/rfp_hero.png';
+---
+
+<BaseLayout 
+  title="Request for Proposal | Duke's Professional Cleaning"
+  description="Submit a formal Request for Proposal (RFP) for commercial, corporate, or medical cleaning services across Dacula and Metro Atlanta."
+>
+  <main>
+    <section class="inner-hero">
+      <div class="inner-hero-grid">
+        <div>
+          <p class="inner-eyebrow">RFP Intake</p>
+          <h1>Submit a detailed cleaning RFP for a tailored proposal</h1>
+          <p>
+            Share facility scope, required outcomes, and service priorities. Our
+            team responds with a practical cleaning program and proposal path.
+          </p>
+        </div>
+        <div class="inner-hero-media">
+          <Picture
+            src={rfpHero}
+            alt="Commercial site planning workflow for a detailed cleaning request for proposal"
+            widths={[1200, 900, 640, 480]}
+            formats={['avif', 'webp']}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 48vw, 520px"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="content-grid">
+        <article class="info-card">
+          <h2>What To Include</h2>
+          <ul class="check-list">
+            <li>Facility type and approximate square footage</li>
+            <li>Service frequency and preferred schedule windows</li>
+            <li>Priority areas and compliance requirements</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h2>Proposal Workflow</h2>
+          <ul class="check-list">
+            <li>Scope review and clarification</li>
+            <li>Recommended service structure</li>
+            <li>Pricing and implementation timeline</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container rfp-form-wrap">
+        <article class="quote-path-card rfp-form-card">
+          <h2 class="rfp-form-title">Detailed RFP Form</h2>
+          <p class="quote-path-note">Fields marked required are needed for proposal qualification.</p>
+
+          <form
+            name="detailed-rfp"
+            method="POST"
+            action="https://api.web3forms.com/submit"
+            id="detailed-rfp-form"
+          >
+            <input type="hidden" name="access_key" value="1f7cee61-56a7-4959-a021-237ed256fee8" />
+            <input type="hidden" name="subject" value="Detailed RFP Request - Duke's Professional Cleaning" />
+            <input type="hidden" name="from_name" value="Duke's Website Detailed RFP" />
+            <input type="hidden" name="botcheck" />
+            <p class="hidden-field" aria-hidden="true">
+              <label>Do not fill this out if you're human: <input name="botcheck" tabindex="-1" autocomplete="off" /></label>
+            </p>
+
+            <div class="form-group">
+              <label for="rfp-name">Name</label>
+              <input id="rfp-name" name="name" type="text" class="form-control" required autocomplete="name" />
+            </div>
+
+            <div class="form-group">
+              <label for="rfp-company">Company</label>
+              <input id="rfp-company" name="company" type="text" class="form-control" required autocomplete="organization" />
+            </div>
+
+            <div class="form-group">
+              <label for="rfp-email">Email</label>
+              <input id="rfp-email" name="email" type="email" class="form-control" required autocomplete="email" />
+            </div>
+
+            <div class="form-group">
+              <label for="rfp-phone">Phone</label>
+              <input id="rfp-phone" name="phone" type="tel" class="form-control" required autocomplete="tel" />
+            </div>
+
+            <div class="form-group">
+              <label for="rfp-address">Facility Address</label>
+              <input id="rfp-address" name="address" type="text" class="form-control" required autocomplete="street-address" />
+            </div>
+
+            <div class="form-group">
+              <label for="rfp-facility-type">Facility Type</label>
+              <select id="rfp-facility-type" name="facilityType" class="form-control" required>
+                <option value="">Select one</option>
+                <option value="office">Office</option>
+                <option value="medical">Medical or Clinical</option>
+                <option value="retail">Retail</option>
+                <option value="industrial">Light Industrial</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="rfp-services-needed">Services Needed</label>
+              <textarea id="rfp-services-needed" name="servicesNeeded" class="form-control" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="rfp-budget">Budget Range (Optional)</label>
+              <input id="rfp-budget" name="budgetRange" type="text" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label for="rfp-notes">Additional Notes</label>
+              <textarea id="rfp-notes" name="notes" class="form-control" rows="4"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit RFP</button>
+            <p class="form-status" data-form-status="detailed-rfp" aria-live="polite"></p>
+          </form>
+        </article>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

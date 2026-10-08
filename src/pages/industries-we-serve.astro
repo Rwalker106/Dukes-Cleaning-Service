@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Picture } from 'astro:assets';
+import industriesHero from '../assets/industries_we_serve_hero.png';
+---
+
+<BaseLayout 
+  title="Industries We Serve | Duke's Professional Cleaning"
+  description="Tailored commercial cleaning for corporate offices, medical facilities, car dealerships, retail, and industrial spaces across Metro Atlanta."
+>
+  <main>
+    <section class="inner-hero">
+      <div class="inner-hero-grid">
+        <div>
+          <p class="inner-eyebrow">Industry Expertise</p>
+          <h1>Cleaning programs built around your facility type</h1>
+          <p>
+            Different facilities require different standards. Duke's tailors scope,
+            process, and timing based on tenant expectations, compliance needs, and
+            daily traffic patterns.
+          </p>
+          <div class="inner-hero-actions">
+            <a href="/rfp" class="btn btn-primary">Start an Industry-Specific Proposal</a>
+            <a href="/about" class="btn btn-outline">Learn About Our Team</a>
+          </div>
+        </div>
+        <div class="inner-hero-media">
+          <Picture
+            src={industriesHero}
+            alt="Commercial facility maintained to industry-specific cleaning standards"
+            widths={[1200, 900, 640, 480]}
+            formats={['avif', 'webp']}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 48vw, 520px"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="content-grid">
+        <article class="info-card">
+          <h2>Corporate Offices</h2>
+          <p>
+            Reception-forward cleaning that supports staff wellbeing and a strong
+            first impression for visitors and clients.
+          </p>
+        </article>
+        <article class="info-card">
+          <h2>Medical and Healthcare</h2>
+          <p>
+            Protocol-driven cleaning focused on disinfection, treatment areas,
+            waiting spaces, and high-touch surfaces.
+          </p>
+        </article>
+        <article class="info-card">
+          <h2>Auto and Dealership Facilities</h2>
+          <p>
+            Showroom-polish standards, customer lounge care, and restroom quality
+            control that aligns with brand image.
+          </p>
+        </article>
+        <article class="info-card">
+          <h2>Retail and Public-Facing Spaces</h2>
+          <p>
+            Entrance, floor, and touchpoint programs tuned for high traffic and
+            visual consistency through operating hours.
+          </p>
+        </article>
+        <article class="info-card">
+          <h2>Education and Training Sites</h2>
+          <p>
+            Classroom, corridor, and common-area cleaning with careful scheduling
+            around class and event calendars.
+          </p>
+        </article>
+        <article class="info-card">
+          <h2>Light Industrial and Warehouse Offices</h2>
+          <p>
+            Office-zone and shared-area support for mixed environments where dust,
+            foot traffic, and shift timing vary week to week.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

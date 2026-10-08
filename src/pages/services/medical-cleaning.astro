@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Picture } from 'astro:assets';
+import medicalHero from '../../assets/medical_cleaning_hero.png';
+
+const faqItems = [
+  {
+    question: 'What areas are covered in medical facility cleaning?',
+    answer:
+      'Medical cleaning commonly covers waiting areas, treatment rooms, nurse stations, restrooms, and shared touchpoints using protocol-driven methods.',
+  },
+  {
+    question: 'Do you provide disinfection as part of medical cleaning?',
+    answer:
+      'Yes. Disinfection of high-touch and critical-contact surfaces is integrated into scope based on facility use and risk profile.',
+  },
+  {
+    question: 'Can medical cleaning be scheduled outside patient hours?',
+    answer:
+      'Yes. Duke\'s can schedule evening or after-hours service windows to support quieter clinical operations.',
+  },
+  {
+    question: 'How do you maintain consistency for healthcare spaces?',
+    answer:
+      'Crews follow structured area checklists and quality controls so required tasks are completed consistently at each service visit.',
+  },
+  {
+    question: 'Is medical facility cleaning available across Metro Atlanta?',
+    answer:
+      'Yes. Service is available in Dacula, across Gwinnett County, and in surrounding Metro Atlanta service areas.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout 
+  title="Medical Facility Cleaning | Duke's Professional Cleaning"
+  description="Protocol-driven medical and healthcare facility cleaning across Metro Atlanta. Specialized disinfection for clinics, offices, and care centers."
+>
+  <main>
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+    <section class="inner-hero">
+      <div class="inner-hero-grid">
+        <div>
+          <p class="inner-eyebrow">Specialized Service</p>
+          <h1>Medical facility cleaning built on protocol and consistency</h1>
+          <p>
+            Duke's provides detailed, process-oriented cleaning for healthcare and
+            clinical spaces where trust, sanitation, and reliability are essential.
+          </p>
+          <div class="inner-hero-actions">
+            <a href="/rfp" class="btn btn-primary">Request Medical Cleaning Quote</a>
+            <a href="/services" class="btn btn-outline">Back to All Services</a>
+          </div>
+        </div>
+        <div class="inner-hero-media">
+          <Picture
+            src={medicalHero}
+            alt="Healthcare environment maintained with protocol-driven cleaning and disinfection"
+            widths={[1200, 900, 640, 480]}
+            formats={['avif', 'webp']}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 48vw, 520px"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="content-grid">
+        <article class="info-card">
+          <h2>Clinical Priority Areas</h2>
+          <ul class="check-list">
+            <li>Waiting rooms and reception touchpoints</li>
+            <li>Exam and treatment room support zones</li>
+            <li>Restrooms and staff shared spaces</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h2>Program Controls</h2>
+          <ul class="check-list">
+            <li>Checklist-based task verification</li>
+            <li>Disinfection process consistency</li>
+            <li>Scheduled service windows by facility needs</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h2>Facility Benefit</h2>
+          <p>
+            Reliable clinical cleaning helps protect patient confidence, support
+            staff operations, and reinforce your practice standards.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <h2 class="faq-title">Medical Facility Cleaning FAQ</h2>
+      <p class="faq-lead">
+        High-intent questions and direct answers prepared for patients, managers,
+        and AI search systems evaluating healthcare cleaning providers.
+      </p>
+      <div class="faq-accordion">
+        {faqItems.map((item) => (
+          <details class="faq-item">
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>

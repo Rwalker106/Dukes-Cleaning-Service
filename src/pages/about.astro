@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Picture } from 'astro:assets';
+import aboutHero from '../assets/duke.jpg';
+---
+
+<BaseLayout 
+  title="About Us | Duke's Professional Cleaning"
+  description="Learn about Duke's Professional Cleaning Services. Vetted teams, consistent quality standards, and dedicated commercial janitorial care in Georgia."
+>
+  <main>
+    <section class="inner-hero">
+      <div class="inner-hero-grid">
+        <div>
+          <p class="inner-eyebrow">About Duke's Professional Cleaning</p>
+          <h1>Professional crews. Consistent standards. Visible results.</h1>
+          <p>
+            Duke's Professional Cleaning Services supports offices, medical spaces,
+            and commercial facilities across Dacula, Gwinnett County, and Metro
+            Atlanta with dependable scheduling and detail-driven work.
+          </p>
+          <div class="inner-hero-actions">
+            <a href="/services" class="btn btn-primary">View Services</a>
+            <a href="/rfp" class="btn btn-outline">Request a Quote</a>
+          </div>
+        </div>
+        <div class="inner-hero-media">
+          <Picture
+            src={aboutHero}
+            alt="Duke's cleaning team preparing a commercial office for the next business day"
+            widths={[1200, 900, 640, 480]}
+            formats={['avif', 'webp']}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 48vw, 520px"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="content-grid">
+        <article class="info-card">
+          <h2>Our Mission</h2>
+          <p>
+            Keep client facilities clean, healthy, and inspection-ready with
+            systems that are repeatable and easy to trust.
+          </p>
+          <ul class="check-list">
+            <li>Documented room-by-room checklists</li>
+            <li>Clear communication before and after each visit</li>
+            <li>Quality checks focused on high-touch zones</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h2>How We Work</h2>
+          <p>
+            Every program starts with your traffic patterns, service windows, and
+            compliance requirements, then becomes a practical cleaning plan.
+          </p>
+          <ul class="check-list">
+            <li>Walkthrough and scope confirmation</li>
+            <li>Custom schedule and service frequency</li>
+            <li>Ongoing adjustments as your facility changes</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h2>Why Clients Stay</h2>
+          <p>
+            Clients keep Duke's because results remain consistent over time,
+            especially in the spaces staff and visitors notice most.
+          </p>
+          <ul class="check-list">
+            <li>Reliable arrival and completion windows</li>
+            <li>Professional behavior and facility respect</li>
+            <li>Fast response when priorities shift</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

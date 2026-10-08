@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Picture } from 'astro:assets';
+import officeHero from '../../assets/office_cleaning_hero.png';
+
+const faqItems = [
+  {
+    question: 'What does recurring office cleaning include?',
+    answer:
+      'Recurring office cleaning typically includes trash service, restroom care, breakroom sanitation, vacuuming or floor care, dusting, and disinfection of shared touchpoints.',
+  },
+  {
+    question: 'Can office cleaning be scheduled after hours?',
+    answer:
+      'Yes. Duke\'s offers after-hours and evening schedules so office cleaning does not interrupt daily operations.',
+  },
+  {
+    question: 'How is quality controlled for recurring service?',
+    answer:
+      'We use room-based service checklists and periodic quality reviews to maintain consistency and adjust scope as needs change.',
+  },
+  {
+    question: 'Do you clean shared conference rooms and breakrooms?',
+    answer:
+      'Yes. Conference rooms, reception areas, and breakrooms are core parts of office programs because they affect team experience and client perception.',
+  },
+  {
+    question: 'Do you offer office cleaning across Metro Atlanta?',
+    answer:
+      'Yes. Office cleaning is available in Dacula, Gwinnett County, and surrounding Metro Atlanta business areas.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout 
+  title="Office Cleaning | Duke's Professional Cleaning"
+  description="Reliable recurring office cleaning in Metro Atlanta and Gwinnett County. Nightly, weekly, and customized schedules for corporate spaces."
+>
+  <main>
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+    <section class="inner-hero">
+      <div class="inner-hero-grid">
+        <div>
+          <p class="inner-eyebrow">Specialized Service</p>
+          <h1>Office cleaning programs that stay consistent week after week</h1>
+          <p>
+            From reception to restrooms, Duke's helps office teams maintain clean,
+            professional spaces that support staff focus and visitor confidence.
+          </p>
+          <div class="inner-hero-actions">
+            <a href="/rfp" class="btn btn-primary">Request Office Cleaning Quote</a>
+            <a href="/services" class="btn btn-outline">Back to All Services</a>
+          </div>
+        </div>
+        <div class="inner-hero-media">
+          <Picture
+            src={officeHero}
+            alt="Clean and organized office environment maintained by recurring janitorial service"
+            widths={[1200, 900, 640, 480]}
+            formats={['avif', 'webp']}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 48vw, 520px"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="content-grid">
+        <article class="info-card">
+          <h2>Service Scope</h2>
+          <ul class="check-list">
+            <li>Workstations, common areas, and touchpoint disinfection</li>
+            <li>Restroom and breakroom sanitation standards</li>
+            <li>Floor care and trash removal by schedule</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h2>Frequency Options</h2>
+          <ul class="check-list">
+            <li>Nightly, three-times-weekly, or weekly programs</li>
+            <li>Hybrid schedules for flexible office occupancy</li>
+            <li>Add-on deep cleaning for reset cycles</li>
+          </ul>
+        </article>
+        <article class="info-card">
+          <h2>Business Benefit</h2>
+          <p>
+            A cleaner office reduces distractions, supports occupant confidence,
+            and improves how visitors perceive your organization.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <h2 class="faq-title">Office Cleaning FAQ</h2>
+      <p class="faq-lead">
+        Common buyer questions with direct answers written for people and search
+        engines evaluating office cleaning providers.
+      </p>
+      <div class="faq-accordion">
+        {faqItems.map((item) => (
+          <details class="faq-item">
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>

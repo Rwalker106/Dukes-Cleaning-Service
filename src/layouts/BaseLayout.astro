@@ -1,0 +1,391 @@
+
+---
+// src/layouts/BaseLayout.astro
+interface Props {
+  title: string;
+  description?: string;
+}
+
+import { Font, Image, getImage } from 'astro:assets';
+import ogimage from '../assets/og-image.png';
+import logo from '../assets/logo.png';
+import '../styles/style.css';
+
+const ogImage = await getImage({
+  src: ogimage,
+  alt: "Duke's Professional Cleaning Services - Commercial Cleaning in Dacula, GA",
+  width: 1200,
+  height: 630,
+  format: 'png',
+  fit: 'cover',
+});
+
+const logoImage = await getImage({
+  src: logo,
+  alt: "Duke's Professional Cleaning Services Logo",
+  width: 60,
+  height: 60,
+  format: 'png',
+  fit: 'cover',
+});
+
+const { title, description = "Duke's Professional Cleaning offers commercial, medical, and janitorial cleaning across Dacula, Gwinnett County, and Metro Atlanta. Get a free quote today!" } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const logoURL = new URL(logoImage.src, Astro.site).toString();
+const ogImageURL = new URL(ogImage.src, Astro.site).toString();
+const siteName = "Duke's Professional Cleaning Services";
+const legalName = "Duke's Professional Cleaning Services LLC";
+
+const schema= {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness","ProfessionalService", "CleaningService"],
+    "name": siteName, 
+    "legalName": legalName,
+    "url": "https://dukesprofessionalcleaningservices.com",
+    "telephone": "(678) 622-2895",
+    "image": logoURL,
+    "priceRange": "$$",
+    "serviceType": [
+          "Office Cleaning",
+          "Janitorial Services",
+          "Commercial Cleaning",
+          "Disinfection Services",
+          "Medical Facility Cleaning",
+          "Dealership Cleaning",
+          "Retail Store Cleaning",
+          "Educational Facility Cleaning",
+          "Gym & Fitness Center Cleaning",
+          "Restaurant Cleaning",
+          "Warehouse Cleaning",
+          "After-Hours Commercial Cleaning"
+        ],
+     "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Dacula",
+          "addressRegion": "GA",
+          "postalCode": "30019",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 33.9887,
+          "longitude": -83.898
+        },
+        "areaServed": [
+          { "@type": "Place", "name": "Dacula, GA" },
+          { "@type": "Place", "name": "Lawrenceville, GA" },
+          { "@type": "Place", "name": "Buford, GA" },
+          { "@type": "Place", "name": "Hamilton Mill, GA" },
+          { "@type": "Place", "name": "Auburn, GA" },
+          { "@type": "Place", "name": "Hoschton, GA" },
+          { "@type": "Place", "name": "Braselton, GA" },
+          { "@type": "Place", "name": "Flowery Branch, GA" },
+          { "@type": "Place", "name": "Snellville, GA" },
+          { "@type": "Place", "name": "Suwanee, GA" },
+          { "@type": "Place", "name": "Duluth, GA" },
+          { "@type": "AdministrativeArea", "name": "Gwinnett County, GA" },
+          { "@type": "AdministrativeArea", "name": "Metro Atlanta" }
+        ],
+        "description": "Professional office cleaning services for commercial spaces, corporate offices, and business facilities. Results are high-quality and reliable.",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "08:00",
+            "closes": "18:00"
+          }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Office Cleaning Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Office Cleaning",
+              "description": "Professional office cleaning services for commercial spaces, corporate offices, and business facilities. Results are high-quality and reliable.",
+              "url": "https://dukesprofessionalcleaningservices.com",
+              "image": logoURL,
+              "provider": {
+                "@type": "LocalBusiness",
+                "name": legalName,
+                "url": "https://dukesprofessionalcleaningservices.com",
+                "telephone": "(678) 622-2895",
+                "image": logoURL
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "Deep Cleaning",
+              "description": "Top-to-bottom deep cleaning for commercial spaces and businesses.",
+              "url": "https://dukesprofessionalcleaningservices.com/services/deep-cleaning",
+              "image": logoURL,
+              "provider": {
+                "@type": "LocalBusiness",
+                "name": legalName,
+                "url": "https://dukesprofessionalcleaningservices.com",
+                "telephone": "(678) 622-2895",
+                "image": logoURL
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "Medical Facility Cleaning",
+              "description": "Specialized cleaning and disinfection for medical facilities.",
+              "url": "https://dukesprofessionalcleaningservices.com/services/medical-cleaning",
+              "image": logoURL,
+              "provider": {
+                "@type": "LocalBusiness",
+                "name": legalName,
+                "url": "https://dukesprofessionalcleaningservices.com",
+                "telephone": "(678) 622-2895",
+                "image": logoURL
+              }
+            },
+            {
+              "@type": "Offer",
+              "name": "Green Cleaning",
+              "description": "Eco-friendly cleaning using green products and practices, available across all our services.",
+              "url": "https://dukesprofessionalcleaningservices.com/green-clean",
+              "image": logoURL,
+              "provider": {
+                "@type": "LocalBusiness",
+                "name": legalName,
+                "url": "https://dukesprofessionalcleaningservices.com",
+                "telephone": "(678) 622-2895",
+                "image": logoURL
+              }
+            }
+          ]
+        },
+        "sameAs": [
+          "https://www.facebook.com/dukesprofessionalcleaningservices",
+          "https://www.instagram.com/dukesofficecleaningservices"
+        ]
+}
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script is:inline>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+
+  <Font cssVariable="--font-sans" preload />
+
+  <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:alt" content={ogImage.attributes.alt} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content={ogImage.attributes.alt} />
+
+  <!-- Favicons & theme-color: added directly here rather than relying on astro-favicons' own tag
+
+       injection, which does nothing in this project — its middleware checks for an
+       X-Astro-Route-Type response header that Astro never actually sets here, in dev or build,
+       so the <link>/<meta> tags it's supposed to inject never appear even though it does
+       correctly generate the underlying image files into dist/. -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#1E3A8A" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F172A" />
+
+  <!-- JSON-LD structured data goes here -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}/>
+
+    <link rel="canonical" href={canonicalURL} />
+
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <nav id="navbar" aria-label="Primary">
+      <a href="/" class="nav-brand nav-brand-logo" aria-label="Duke's Professional Cleaning Home">
+        <Image 
+        src={logo} 
+        alt="Duke's Professional Cleaning Logo"  
+        widths={[30, 45, 60, 90, 120, 180]}
+        format="png"
+        sizes="(max-width: 480px) 30px, (max-width: 768px) 45px, 60px"
+        class="nav-brand-image"
+        />
+      </a>
+
+      <button
+        id="nav-toggle"
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="nav-links"
+        aria-label="Toggle menu"
+      >
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+
+      <ul id="nav-links" class="nav-links">
+        <li><a href="/" aria-current={Astro.url.pathname === "/" ? "page" : undefined}>Home</a></li>
+        <li class="has-dropdown">
+          <button
+            id="about-toggle"
+            class="dropdown-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="about-dropdown"
+          >
+            About
+          </button>
+          <ul id="about-dropdown" class="dropdown-menu">
+            <li><a href="/about">Why Duke's</a></li>
+            <li><a href="/areas-we-serve">Areas We Serve</a></li>
+            <li><a href="/industries-we-serve">Industries We Serve</a></li>
+            <li><a href="/green-clean">Green Cleaning</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <button
+            id="services-toggle"
+            class="dropdown-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="services-dropdown"
+          >
+            Services
+          </button>
+          <ul id="services-dropdown" class="dropdown-menu">
+            <li><a href="/services">All Services</a></li>
+            <li><a href="/services/deep-cleaning">Deep Cleaning</a></li>
+            <li><a href="/services/office-cleaning">Office Cleaning</a></li>
+            <li><a href="/services/medical-cleaning">Medical Facility Cleaning</a></li>
+          </ul>
+        </li>
+        <li><a href="/rfp" class="btn btn-primary">Request a Quote</a></li>
+        <li>
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to dark theme"
+          >
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="main-content" tabindex="-1">
+    <!-- The <slot /> acts as a portal for page-specific HTML -->
+    <slot />
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <p class="footer-logo">Duke's <span>Professional Cleaning</span></p>
+        <p>Proudly serving our community with top-notch cleaning services.</p>
+      </div>
+
+      <div class="footer-info">
+        <p>Hours: Mon–Fri 8am–6pm</p>
+        <p>*After-hours and weekend service </p>
+        <p>available upon request</p>
+        <p><a href="tel:+16786222895">(678) 622-2895</a></p>
+        <p><a href="mailto:ddelisfortservices@gmail.com">ddelisfortservices@gmail.com</a></p>
+      </div>
+
+      <div class="footer-social">
+        <a
+          href="https://www.facebook.com/dukesprofessionalcleaningservices"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Duke's Professional Cleaning on Facebook"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+          </svg>
+        </a>
+        <a
+          href="https://www.instagram.com/dukesofficecleaningservices"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Duke's Professional Cleaning on Instagram"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {new Date().getFullYear()} {legalName}.</p>
+      <p class="footer-legal-links">
+        <a href="/privacy">Privacy Policy</a>
+        <span aria-hidden="true"> · </span>
+        <a href="/tos">Terms of Service</a>
+      </p>
+    </div>
+  </footer>
+
+  <div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+    <p class="cookie-banner-text">
+      We use optional analytics cookies to understand site performance. You can accept or decline Google Analytics.
+    </p>
+    <div class="cookie-banner-actions">
+      <button id="cookie-accept" class="btn btn-primary" type="button">Accept Analytics</button>
+      <button id="cookie-decline" class="btn btn-outline" type="button">Decline</button>
+    </div>
+  </div>
+
+  <script>
+    import '../scripts/nav.js';
+    import '../scripts/theme-toggle.js';
+    import '../scripts/consent.js';
+    import '../scripts/forms-web3.js';
+  </script>
+</body>
+</html>
